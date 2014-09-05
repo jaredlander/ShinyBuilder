@@ -8,7 +8,6 @@
 #' @export
 runShinyBuilder <- function(){
   sb_path <- system.file(package = 'ShinyBuilder')
-  #sb_path <- sprintf("%s/", sb_path)
   
   #Check/set permissions
   dir_mode <- as.numeric(as.character(file.info(paste0(sb_path, '/dashboards'))$mode))
