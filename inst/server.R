@@ -256,8 +256,8 @@ shinyServer(function(input, output, session) {
   observe({  
     if(input$new_dash_btn > 0) {
       dashboard_title           <- isolate(input$new_dash_file_name)
-      file.copy(str_c(sb_dir, '/data/empty_dash.RData'), str_c(sb_dir, '/dashboards/', dashboard_title, '.RData'))
-      new_available_dashboards  <- str_replace(list.files(file.path(sb_dir, 'dashboards/')), '.RData', '')
+      file.copy(sprintf("%s.RData", file.path(sb_dir, "data/empty_dash")), sprintf("%s.RData", file.path(sb_dir, "dashboards", dashboard_title)))
+      new_available_dashboards  <- str_replace(list.files(file.path(sb_dir, 'dashboards')), '.RData', '')
       selected_dashboard        <- dashboard_title
       updateSelectInput(session, 'sel_dashboard', choices = new_available_dashboards, selected = dashboard_title) 
     }
@@ -267,7 +267,7 @@ shinyServer(function(input, output, session) {
   #Load dash observer
   observe({
         #Load data
-        load(file = str_c(sb_dir, '/dashboards/', selected_dashboard(), '.RData'))
+        load(file = sprintf("%s.RData", file.path(sb_dir, "dashboards", selected_dashboard())))
         #print('====Loaded Object====')print(dashboard_state)
         
         #Load widgets
