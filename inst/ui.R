@@ -7,10 +7,10 @@ shinyUI(fluidPage(
   #Includes
   tags$head(tags$script(src = "//tinymce.cachefly.net/4.0/tinymce.min.js")),
   tags$head(tags$script(src = 'shinyMCE/shiny-tinymce-bindings.js')),
-  includeScript(str_c(sb_dir, 'www/shiny-gridster-bindings.js')), 
-  includeScript(str_c(sb_dir, 'www/json2.js')),
+  includeScript(file.path(sb_dir, 'www/shiny-gridster-bindings.js')), 
+  includeScript(file.path(sb_dir, 'www/json2.js')),
   tags$head(tags$script(src = "//www.google.com/jsapi")),
-  includeScript(str_c(sb_dir, 'www/googleChart_init.js')),
+  includeScript(file.path(sb_dir, 'www/googleChart_init.js')),
 
   #Navbar
   div(class="navbar navbar-static-top navbar", 
@@ -120,5 +120,5 @@ shinyUI(fluidPage(
   p('powered by iHR DataScience', align = 'left'),    
   
   #Main Stylesheet
-  includeCSS(str_c(sb_dir, '/www/main.css'))
+  includeCSS(file.path(sb_dir, '/www/main.css'))
 ))
